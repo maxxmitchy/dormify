@@ -18,8 +18,6 @@ const VerifyEmail = () => {
         resendError
     } = useSelector(({ auth }) => auth);
 
-    console.log(resendEmailSuccess);
-
     const dispatch = useDispatch();
 
     useEffect(() => {

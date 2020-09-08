@@ -34,8 +34,8 @@ export function getUsers() {
 
 export const {
     getUsersStart,
-    Success,
-    Fail,
+    getUserSuccess,
+    getUserFail,
 } = userSlice.actions;
 
 export default userSlice.reducer;

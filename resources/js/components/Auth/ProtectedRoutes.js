@@ -23,7 +23,7 @@ const ProtectedRoutes = ({ component: Component, isAdmin, ...rest }) => {
     }
 
     if (isAdmin !== undefined && isVerified !== "") {
-        //isAdmin means the user is an Admin. Role can either be user,admin, or agent
+        //isAdmin means the user is an Admin. Role can either be User, Admin , or Agent
         if (isAdmin != role) {
             return <Redirect to="/dashboard" />;
         }

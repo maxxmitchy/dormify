@@ -8,15 +8,14 @@ import { NavLink } from "react-router-dom";
 import { activeStyle } from "../../Common/Constants";
 import { useSelector, useDispatch } from "react-redux";
 import { userLogout } from "../../../Redux/features/auth/authSlice";
+import Backdrop from "../../Common/Backdrop/Backdrop";
 
 const IsAuth = () => {
-    const authUser = useSelector(({ auth }) => auth);
+    const { user, role } = useSelector(({ auth }) => auth);
 
     const [profile, setProfile] = useState(false);
 
     const dispatch = useDispatch();
-
-    let agent = authUser && authUser.role;
 
     return (
         <React.Fragment>
@@ -48,7 +47,7 @@ const IsAuth = () => {
                                 <hr />
                                 <li onClick={() => setProfile(!profile)}>
                                     <NavLink
-                                        to={"/userprofile/" + authUser.user.id}
+                                        to={"/userprofile/" + user?.id}
                                         activeStyle={activeStyle}
                                     >
                                         Manage Listings
@@ -125,7 +124,7 @@ const IsAuth = () => {
                         </div>
                     </a>
                 </div>
-                {agent === "Agent" ? (
+                {role === "role" ? (
                     <div className="bottom_nav_item">
                         <NavLink
                             to="/upload"
