@@ -16,4 +16,4 @@ Route::get('/{any}', function(){
 // since we have already intercepted the get requests
 // only post requests available in the Auth::routes
 // will be avaialable
-Auth::routes();
+Auth::routes(['verify' => true]);

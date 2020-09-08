@@ -10,4 +10,11 @@ Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('api/email/verify', 'Auth\VerificationController@show')->name('verification.notice');
 Route::get('api/email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
 Route::get('api/email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
+// 
+// routes for showing lodges on homepage
+Route::group(['prefix'=>'lodge'], function(){
+    // shows the lodges available in the user location
+    Route::get('/{university}','Home\LodgeController@locationIndex');
+});
+// 
 Auth::routes(['verify' => true]);
