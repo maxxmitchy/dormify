@@ -8,6 +8,11 @@ class Property extends Model
 {
     protected $guarded = [];
 
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
     public function type()
     {
         return $this->belongsTo(PropertyType::class, 'property_type_id');
