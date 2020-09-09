@@ -16,8 +16,12 @@ class AvaialableLodgesTest extends TestCase
      */
     public function testSeeLodgesNearMe()
     {
-        $location_id = 2;
-        $response = $this->getJson('/api/lodge/'.$location_id);
+        // creates a new city using city factory
+        $city = factory(\App\City::class)->create();
+        // 
+        // creates 30 new university entries from factory
+        $universities = $city->universities()->create(factory(\App\University::class, 30)->raw());
+        $response = $this->getJson('/api/accomodation/'.$location);
 
         $response->assertStatus(200);
         $response->assertJsonFragment([
