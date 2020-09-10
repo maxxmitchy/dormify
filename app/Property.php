@@ -28,4 +28,9 @@ class Property extends Model
         return $this->morphOne(Image::class, 'imageable');
     }
 
+    public function university()
+    {
+        return $this->belongsTo('App\University');
+    }
+
 }

@@ -25,6 +25,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsToMany(Role::class)->withTimestamps();
     }
 
+    public function properties()
+    {
+        return $this->hasMany('App\Property');  
+    }
+
     public function image()
     {
         return $this->morphOne(Image::class, 'imageable');

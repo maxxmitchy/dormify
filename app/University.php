@@ -12,5 +12,10 @@ class University extends Model
     {
         return $this->hasMany(\App\Property::class);
     }
+
+    public function city()
+    {
+        return $this->belongsTo('App\City');
+    }
     
 }
