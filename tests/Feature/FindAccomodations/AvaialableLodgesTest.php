@@ -4,7 +4,9 @@ namespace Tests\Feature\FindAccomodations;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use PropertySeeder;
 use Tests\TestCase;
+use App\University;
 
 class AvaialableLodgesTest extends TestCase
 {
@@ -16,12 +18,12 @@ class AvaialableLodgesTest extends TestCase
      */
     public function testSeeLodgesNearMe()
     {
-        // creates a new city using city factory
-        $city = factory(\App\City::class)->create();
+        $this->withoutExceptionHandling();
+        $this->seed(PropertySeeder::class);
         // 
-        // creates 30 new university entries from factory
-        $universities = $city->universities()->create(factory(\App\University::class, 30)->raw());
-        $response = $this->getJson('/api/accomodation/'.$location);
+        $university = University::firstOrFail();
+        // 
+        $response = $this->getJson('/api/accomodation/'.$university->id);
 
         $response->assertStatus(200);
         $response->assertJsonFragment([
