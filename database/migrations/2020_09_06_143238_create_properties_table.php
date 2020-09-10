@@ -15,14 +15,14 @@ class CreatePropertiesTable extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->foreignId('user_id')->constrained();
             $table->unsignedBigInteger('university_id');
             $table->unsignedBigInteger('property_type_id');
             $table->string('name');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->text('address');
             $table->longText('description');
-            $table->boolean('status');
+            $table->boolean('status')->default(false);
             $table->string('eta');
             $table->timestamps();
         });
