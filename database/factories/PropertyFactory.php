@@ -10,7 +10,7 @@ $factory->define(Model::class, function (Faker $faker) {
         'name' => $faker->name,
         'address' => $faker->address,
         'description' => $faker->paragraph(8),
-        'eta' => '4 minutes',
+        'eta' => $faker->time(),
         'user_id' => factory('App\User'),
         'university_id' => factory('App\University'),
         'property_type_id' => factory('App\PropertyType')
