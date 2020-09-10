@@ -23,7 +23,7 @@ class CreatePropertiesTable extends Migration
             $table->text('address');
             $table->longText('description');
             $table->boolean('status')->default(false);
-            $table->string('eta');
+            $table->time('eta');
             $table->timestamps();
         });
     }

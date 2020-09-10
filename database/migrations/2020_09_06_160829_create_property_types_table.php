@@ -15,7 +15,7 @@ class CreatePropertyTypesTable extends Migration
     {
         Schema::create('property_types', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('parent_id');
+            $table->unsignedBigInteger('parent_id')->default(0);
             $table->string('name');
             $table->text('description');
             $table->timestamps();
